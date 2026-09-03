@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Tokyo Night — developer aesthetic (dark, code-editor inspired) */
+  :root {
+    --background: 235 19% 13%;        /* #1a1b26 deep indigo-navy */
+    --foreground: 229 73% 86%;        /* #c0caf5 soft lavender text */
+
+    --card: 230 23% 19%;              /* #24283b elevated surface */
+    --card-foreground: 229 73% 86%;
+
+    --popover: 230 23% 19%;
+    --popover-foreground: 229 73% 86%;
+
+    --primary: 221 89% 72%;           /* #7aa2f7 Tokyo blue */
+    --primary-foreground: 235 30% 12%;/* dark text on blue */
+
+    --secondary: 232 24% 24%;         /* #2f334d chip / surface */
+    --secondary-foreground: 229 73% 86%;
+
+    --muted: 230 21% 17%;             /* muted surface */
+    --muted-foreground: 229 22% 57%;  /* #7982a9 secondary text */
+
+    --accent: 221 89% 72%;            /* #7aa2f7 accent blue */
+    --accent-foreground: 235 30% 12%; /* dark text on accent */
+
+    --destructive: 349 89% 72%;       /* #f7768e Tokyo red */
+    --destructive-foreground: 235 30% 12%;
+
+    --border: 228 23% 21%;            /* #292e42 */
+    --input: 228 23% 21%;
+    --ring: 221 89% 72%;
+
+    --radius: 0.5rem;
+
+    --hero-bg: 237 20% 9%;            /* deepest near-black indigo */
+    --hero-fg: 229 73% 86%;
+    --hero-muted: 229 22% 60%;
+
+    --stat-accent: 202 100% 75%;      /* #7dcfff cyan pop */
+    --stat-bg: 237 20% 9%;
+    --stat-fg: 229 73% 86%;
+
+    --sidebar-background: 237 20% 9%;
+    --sidebar-foreground: 229 30% 80%;
+    --sidebar-primary: 221 89% 72%;
+    --sidebar-primary-foreground: 235 30% 12%;
+    --sidebar-accent: 230 23% 19%;
+    --sidebar-accent-foreground: 229 73% 86%;
+    --sidebar-border: 228 23% 21%;
+    --sidebar-ring: 221 89% 72%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.24em];
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+  .font-body {
+    font-family: 'Inter', sans-serif;
+  }
+}
