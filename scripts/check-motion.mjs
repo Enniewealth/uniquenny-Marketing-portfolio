@@ -43,8 +43,14 @@ try {
   await page.waitForTimeout(900);
   const proofAfter = await proofRail.evaluate(element => getComputedStyle(element).transform);
   assert.notEqual(proofBefore, proofAfter, 'Analytics image galleries should move continuously');
+  const techcrierRail = page.locator('.techcrier-carousel');
+  await techcrierRail.evaluate(element => element.parentElement?.scrollIntoView({ block: 'center' }));
+  const techcrierBefore = await techcrierRail.evaluate(element => getComputedStyle(element).transform);
+  await page.waitForTimeout(900);
+  const techcrierAfter = await techcrierRail.evaluate(element => getComputedStyle(element).transform);
+  assert.notEqual(techcrierBefore, techcrierAfter, 'TechCrier Canva images should move continuously');
   assert.deepEqual(errors, [], 'No browser runtime errors');
-  console.log('PASS: homepage metrics, case-study metrics, analytics images and work animations move continuously with no runtime errors.');
+  console.log('PASS: homepage metrics, case-study metrics, analytics images, TechCrier images and work animations move continuously with no runtime errors.');
 } finally {
   await browser?.close();
   server.close();

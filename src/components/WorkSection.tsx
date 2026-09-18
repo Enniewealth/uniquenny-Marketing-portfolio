@@ -96,39 +96,30 @@ const WorkSection = () => {
           </p>
         </div>
 
-        <div className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 lg:grid-cols-3 lg:gap-8">
-          {works.map((work, index) => (
-            <motion.article
-              key={work.title}
-              initial={reducedMotion ? false : { opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={reducedMotion ? undefined : { y: -9, rotate: index % 2 ? 0.4 : -0.4 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.45, delay: (index % 3) * 0.06 }}
-              className="work-gallery-card w-[86%] shrink-0 snap-start overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-2xl sm:w-auto"
-            >
-              <ImagePreview src={work.src} title={work.title} caption={`TechCrier · ${work.type} · ${work.category}`} aspect="square" />
-              <div className="p-5">
-                <div className="mb-1 flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
-                  <span className="text-xs uppercase tracking-wider text-accent font-semibold">
-                    {work.type}
-                  </span>
-                  <span className="text-xs text-muted-foreground">
-                    {work.category}
-                  </span>
-                </div>
-                <h3 className="text-sm font-medium text-foreground line-clamp-2">
-                  {work.title}
-                </h3>
-                {work.metric && (
-                  <p className="mt-2 text-xs text-accent font-semibold flex items-center gap-1.5">
-                    <BarChart3 className="w-3.5 h-3.5" />
-                    {work.metric.value} {work.metric.label}
-                  </p>
-                )}
+        <div className="relative overflow-hidden py-3">
+          <div className="techcrier-carousel flex w-max gap-6 will-change-transform">
+            {[false, true].map((duplicate) => (
+              <div key={String(duplicate)} aria-hidden={duplicate || undefined} className="flex shrink-0 gap-6">
+                {works.map((work, index) => duplicate ? (
+                  <article key={work.title} className="w-[18rem] shrink-0 overflow-hidden rounded-xl border border-border bg-card shadow-sm sm:w-[20rem]">
+                    <div className="aspect-square bg-primary/5"><img src={work.src} alt="" loading="lazy" className="h-full w-full object-contain" /></div>
+                    <div className="p-5"><p className="text-xs font-semibold uppercase tracking-wider text-accent">{work.type}</p><p className="mt-2 line-clamp-2 text-sm font-medium text-foreground">{work.title}</p></div>
+                  </article>
+                ) : (
+                  <motion.article key={work.title} initial={reducedMotion ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} whileHover={reducedMotion ? undefined : { y: -9, rotate: index % 2 ? 0.4 : -0.4 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.45, delay: (index % 3) * 0.06 }} className="w-[18rem] shrink-0 overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-2xl sm:w-[20rem]">
+                    <ImagePreview src={work.src} title={work.title} caption={`TechCrier · ${work.type} · ${work.category}`} aspect="square" />
+                    <div className="p-5">
+                      <div className="mb-1 flex flex-wrap items-center justify-between gap-x-3 gap-y-1"><span className="text-xs font-semibold uppercase tracking-wider text-accent">{work.type}</span><span className="text-xs text-muted-foreground">{work.category}</span></div>
+                      <h3 className="line-clamp-2 text-sm font-medium text-foreground">{work.title}</h3>
+                      {work.metric && <p className="mt-2 flex items-center gap-1.5 text-xs font-semibold text-accent"><BarChart3 className="h-3.5 w-3.5" />{work.metric.value} {work.metric.label}</p>}
+                    </div>
+                  </motion.article>
+                ))}
               </div>
-            </motion.article>
-          ))}
+            ))}
+          </div>
+          <span aria-hidden="true" className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-secondary/80 to-transparent md:w-20" />
+          <span aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-secondary/80 to-transparent md:w-20" />
         </div>
         <motion.div initial={reducedMotion ? false : { opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mt-20 md:mt-28">
           <h3 className="font-display text-2xl font-bold">Read the published articles</h3>

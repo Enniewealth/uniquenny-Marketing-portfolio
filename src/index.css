@@ -58,6 +58,8 @@
 .case-metrics:hover { animation-play-state: paused; }
 .proof-carousel { animation: proof-carousel 28s linear infinite; }
 .proof-carousel:hover { animation-play-state: paused; }
+.techcrier-carousel { animation: techcrier-carousel 42s linear infinite; }
+.techcrier-carousel:hover { animation-play-state: paused; }
 .metric-card { animation: metric-float 3.4s ease-in-out infinite; }
 .metric-card:nth-child(even) { animation-delay: -1.7s; }
 .work-row::after {
@@ -81,6 +83,7 @@
 }
 @keyframes case-metrics { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 0.375rem)); } }
 @keyframes proof-carousel { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 0.625rem)); } }
+@keyframes techcrier-carousel { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 0.75rem)); } }
 @keyframes metric-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
 @keyframes work-sweep { 0% { transform: translateX(0); opacity: 0; } 20% { opacity: 1; } 80% { opacity: 1; } 100% { transform: translateX(485%); opacity: 0; } }
 @keyframes arrow-drift { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(4px, -4px); } }
