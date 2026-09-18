@@ -1,0 +1,6 @@
+export const groubyDocuments = [
+  { title: "Grouby is your go-to", description: "Convenience-led brand copy positioning Grouby as an affordable source for household groceries.", preview: "/work/grouby/grouby-is-your-go.html", download: "/documents/grouby/grouby-is-your-go.docx", format: "DOCX", category: "Brand copy" },
+  { title: "Weekend food ideas", description: "A food-content article covering accessible Nigerian meals from breakfast through dinner.", preview: "/work/grouby/weekend-food-ideas.html", download: "/documents/grouby/weekend-food-ideas.docx", format: "DOCX", category: "Lifestyle content" },
+  { title: "DFC Foods vendor showcase", description: "Vendor-led copy introducing DFC Foods and the benefits of its plantain chips.", preview: "/work/grouby/dfc-foods-vendor-showcase.html", download: "/documents/grouby/dfc-foods-vendor-showcase.docx", format: "DOCX", category: "Vendor campaign" },
+  { title: "Ram delivery campaign copy", description: "Seasonal sales copy focused on convenience, choice and doorstep delivery in Lagos.", preview: "/work/grouby/ram-delivery-copy.html", download: "/documents/grouby/ram-delivery-copy.docx", format: "DOCX", category: "Seasonal sales" },
+] as const;

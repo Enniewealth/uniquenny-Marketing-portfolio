@@ -1,17 +1,19 @@
-import { Badge } from "@/components/ui/badge";
-import { BarChart3, Eye } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowUpRight, BarChart3 } from "lucide-react";
+import ImagePreview from "@/components/ImagePreview";
 import workMpesa from "@/assets/work-mpesa.png";
 import workAi from "@/assets/work-ai.png";
 import workMoniepoint from "@/assets/work-moniepoint.png";
 import workUberBolt from "@/assets/work-uberbolt.png";
 import workTaxstreem from "@/assets/work-taxstreem.png";
 import workBlogList from "@/assets/work-blog-list.jpg";
+import techcrierGrowth from "@/assets/techcrier-linkedin-growth.jpeg";
 
 type Work = {
   src: string;
   title: string;
   category: string;
-  type: "Carousel" | "Instagram Post" | "Blog Writing";
+  type: "Carousel" | "Instagram Post" | "Blog Writing" | "Analytics";
   metric?: { value: string; label: string };
 };
 
@@ -53,67 +55,51 @@ const works: Work[] = [
     type: "Blog Writing",
     metric: { value: "2.8K+", label: "Reader Views Generated" },
   },
+  {
+    src: techcrierGrowth,
+    title: "TechCrier LinkedIn organic impression growth",
+    category: "Performance",
+    type: "Analytics",
+    metric: { value: "988%", label: "Growth over the previous month" },
+  },
+];
+
+const articles = [
+  { title: "How to find and quietly unlink phone numbers tied to your NIN", href: "https://www.techcrier.com/2025/12/how-to-find-and-quietly-unlink-phone.html", category: "Telecoms" },
+  { title: "10 African startups that folded in 2025", href: "https://www.techcrier.com/2025/12/10-african-startups-that-folded-in-2025.html", category: "Startups" },
+  { title: "Bolaji Yusuf’s Mission to Build World-Class Tech With WebuildX", href: "https://www.techcrier.com/2025/12/bolaji-yusufs-mission-to-build-world.html", category: "Founder profile" },
 ];
 
 const WorkSection = () => {
+  const reducedMotion = useReducedMotion();
   return (
-    <section id="work" className="bg-background py-24 md:py-32">
-      <div className="container mx-auto px-6 max-w-6xl">
-        <div className="text-center mb-14">
+    <section id="work" className="bg-secondary/30 pt-8 pb-16 sm:pb-24">
+      <div className="mx-auto max-w-6xl px-6 lg:px-10">
+        <div className="mb-8 max-w-2xl border-t border-border pt-10">
           <p className="eyebrow mb-3 text-accent">
-            Content gallery
+            TechCrier · Content gallery
           </p>
-          <h2 className="text-3xl md:text-5xl font-display font-bold text-primary mb-4">
+          <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-4">
             Selected editorial work
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
+          <p className="text-muted-foreground text-sm leading-6 md:text-base">
             Social content, carousels and editorial writing created for TechCrier&apos;s audience across Africa&apos;s technology landscape.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {works.map((work) => (
-            <article
+        <div className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-3 sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 lg:grid-cols-3">
+          {works.map((work, index) => (
+            <motion.article
               key={work.title}
-              className="group relative overflow-hidden rounded-xl bg-card border border-border shadow-sm hover:shadow-xl transition-all duration-500"
+              initial={reducedMotion ? false : { opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.45, delay: (index % 3) * 0.06 }}
+              className="w-[86%] shrink-0 snap-start overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-shadow hover:shadow-xl sm:w-auto"
             >
-              <div className="aspect-[4/5] overflow-hidden bg-muted relative">
-                <img
-                  src={work.src}
-                  alt={work.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                {work.metric && (
-                  <div className="absolute top-3 right-3 bg-accent text-accent-foreground rounded-lg shadow-lg px-3 py-2 flex items-center gap-2">
-                    <Eye className="w-4 h-4" strokeWidth={2.5} />
-                    <div className="leading-tight">
-                      <div className="text-base font-bold font-display">{work.metric.value}</div>
-                      <div className="text-[10px] uppercase tracking-wider opacity-90">Views</div>
-                    </div>
-                  </div>
-                )}
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-5">
-                <Badge className="self-start mb-2 bg-accent text-accent-foreground hover:bg-accent">
-                  {work.type}
-                </Badge>
-                <h3 className="text-primary-foreground font-semibold text-lg leading-snug">
-                  {work.title}
-                </h3>
-                <p className="text-primary-foreground/80 text-xs uppercase tracking-wider mt-1">
-                  {work.category}
-                </p>
-                {work.metric && (
-                  <div className="mt-3 flex items-center gap-2 text-primary-foreground/95 text-sm">
-                    <BarChart3 className="w-4 h-4 text-accent" />
-                    <span className="font-semibold">{work.metric.value}</span>
-                    <span className="opacity-80">{work.metric.label}</span>
-                  </div>
-                )}
-              </div>
-              <div className="p-4 group-hover:opacity-0 transition-opacity duration-300">
-                <div className="flex items-center justify-between mb-1">
+              <ImagePreview src={work.src} title={work.title} caption={`TechCrier · ${work.type} · ${work.category}`} aspect="square" />
+              <div className="p-4">
+                <div className="mb-1 flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
                   <span className="text-xs uppercase tracking-wider text-accent font-semibold">
                     {work.type}
                   </span>
@@ -131,8 +117,14 @@ const WorkSection = () => {
                   </p>
                 )}
               </div>
-            </article>
+            </motion.article>
           ))}
+        </div>
+        <div className="mt-10">
+          <h3 className="font-display text-2xl font-bold">Read the published articles</h3>
+          <div className="mt-5 grid gap-4 md:grid-cols-3">
+            {articles.map(article => <a key={article.href} href={article.href} target="_blank" rel="noopener noreferrer" className="group flex min-w-0 flex-col rounded-xl border border-border bg-card p-5 transition-colors hover:border-accent/60"><span className="text-xs font-semibold uppercase tracking-wider text-accent">{article.category}</span><span className="my-3 font-display text-lg font-bold leading-6">{article.title}</span><span className="mt-auto inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-accent">Read on TechCrier <ArrowUpRight size={16} aria-hidden="true" /></span></a>)}
+          </div>
         </div>
       </div>
     </section>

@@ -7,6 +7,12 @@ import codevantLinkedInMonthly from "@/assets/codevant-linkedin-3k.jpeg";
 import attentionInsights from "@/assets/attention-linkedin-insights.jpeg";
 import attentionGrowth from "@/assets/attention-audience-growth.jpeg";
 import afCommunity from "@/assets/af-community-3.png";
+import codevantX100 from "@/assets/codevant-x-100k.jpeg";
+import codevantLinkedInWeekly from "@/assets/daniel-linkedin.jpg";
+import ImagePreview from "@/components/ImagePreview";
+import DocumentGallery from "@/components/DocumentGallery";
+import { attentionFactoryDocuments } from "@/data/portfolioDocuments";
+import { groubyDocuments } from "@/data/groubyDocuments";
 
 type Proof = {
   src: string;
@@ -16,12 +22,10 @@ type Proof = {
 };
 
 const ProofGrid = ({ items }: { items: Proof[] }) => (
-  <div className="grid gap-4 md:grid-cols-3">
+  <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-3 md:grid md:grid-cols-3 md:overflow-visible md:pb-0">
     {items.map((item) => (
-      <figure key={item.alt} className="overflow-hidden rounded-xl border border-border bg-card">
-        <div className="aspect-[16/10] overflow-hidden bg-primary/5">
-          <img src={item.src} alt={item.alt} loading="lazy" className={`h-full w-full object-top ${item.fit === "contain" ? "object-contain" : "object-cover"}`} />
-        </div>
+      <figure key={item.alt} className="w-[86%] shrink-0 snap-start overflow-hidden rounded-xl border border-border bg-card sm:w-[62%] md:w-auto">
+        <ImagePreview src={item.src} title={item.alt} caption={item.caption} />
         <figcaption className="border-t border-border px-4 py-3 text-sm leading-5 text-muted-foreground">{item.caption}</figcaption>
       </figure>
     ))}
@@ -40,10 +44,10 @@ const DetailGrid = ({ items }: { items: { label: string; text: string }[] }) => 
 );
 
 const ClientWorkSection = () => (
-  <section id="case-studies" className="border-t border-border bg-secondary/30 py-24 md:py-32">
+  <section id="case-studies" className="border-t border-border bg-secondary/30 pt-16 pb-12 sm:pt-24 md:pt-32">
     <div className="mx-auto max-w-6xl px-6 lg:px-10">
       <div className="mb-16 max-w-3xl">
-        <p className="eyebrow text-accent">Selected case studies</p>
+        <p className="eyebrow text-accent">Selected work · Case studies</p>
         <h2 className="mt-3 font-display text-4xl font-bold text-foreground md:text-5xl">Strategy, execution and proof</h2>
         <p className="mt-5 text-base leading-7 text-muted-foreground md:text-lg">The work behind the numbers—how I approached content, managed distribution and turned ideas into measurable audience activity.</p>
       </div>
@@ -59,7 +63,7 @@ const ClientWorkSection = () => (
             <div>
               <p className="text-base leading-7 text-muted-foreground">I turned the founder&apos;s Shopify and technical expertise into platform-native content, then used performance reporting to refine topics, formats and distribution across X and LinkedIn.</p>
               <div className="mt-5 flex flex-wrap gap-3">
-                {["80.8K X impressions · +257%", "11,628 LinkedIn impressions · +88.8%", "535 reactions · 52 comments"].map((metric) => <span key={metric} className="rounded-full border border-accent/20 bg-accent/5 px-4 py-2 text-sm font-semibold text-foreground">{metric}</span>)}
+                {["100K X impressions · +632%", "11,628 LinkedIn impressions · +88.8%", "535 reactions · 52 comments"].map((metric) => <span key={metric} className="rounded-full border border-accent/20 bg-accent/5 px-4 py-2 text-sm font-semibold text-foreground">{metric}</span>)}
               </div>
             </div>
           </div>
@@ -70,13 +74,15 @@ const ClientWorkSection = () => (
             { label: "Business value", text: "Expanded founder visibility, increased profile discovery and created a clearer public record of Codevant's expertise." },
           ]} />
           <ProofGrid items={[
+            { src: codevantX100, alt: "Codevant X analytics showing 100K impressions", caption: "X analytics snapshot: 100K impressions (+632%) and 313 engagements. Reporting period not shown in the screenshot." },
             { src: codevantX80, alt: "Codevant X analytics showing 80.8 thousand impressions", caption: "X · 17–30 August 2026: 80.8K impressions, up 257%." },
             { src: codevantLinkedIn, alt: "Codevant LinkedIn analytics showing 11,628 impressions", caption: "LinkedIn · 3 June–31 August 2026: 11,628 impressions, 535 reactions and 52 comments." },
             { src: codevantLinkedInMonthly, alt: "Codevant LinkedIn monthly analytics showing 3,496 impressions", caption: "LinkedIn · 2–31 August 2026: 3,496 impressions, up 43.3%." },
+            { src: codevantLinkedInWeekly, alt: "Codevant LinkedIn analytics showing 2,056 impressions", caption: "LinkedIn · 24–30 July: 2,056 impressions, up 324% over the previous seven days." },
           ]} />
         </motion.article>
 
-        <motion.article initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+        <motion.article id="attention-factory" initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <div className="mb-8 grid gap-8 lg:grid-cols-[1fr_1.15fr]">
             <div>
               <Badge className="mb-4 bg-accent text-accent-foreground hover:bg-accent">AI brand & community</Badge>
@@ -102,9 +108,10 @@ const ClientWorkSection = () => (
             { src: afCommunity, alt: "Attention Factory live community teaching session", caption: "Community education and live-session engagement across the AI groups." },
           ]} />
           <p className="mt-4 text-xs leading-5 text-muted-foreground">Community figures are taken from the daily tracker for recorded activity between 6 and 22 July 2026. Blank dates are excluded rather than treated as zero activity. The LinkedIn follower report runs to 1 September, one day after my role ended on 31 August 2026.</p>
+          <DocumentGallery documents={attentionFactoryDocuments} description="Read the strategy, planning and community documents behind the work. Every sample opens in your browser." />
         </motion.article>
 
-        <motion.article initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+        <motion.article id="grouby" initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <div className="mb-8 grid gap-8 lg:grid-cols-[1fr_1.15fr]">
             <div>
               <Badge className="mb-4 bg-accent text-accent-foreground hover:bg-accent">Consumer copywriting</Badge>
@@ -120,6 +127,7 @@ const ClientWorkSection = () => (
               { title: "Seasonal sales copy", excerpt: "You do not have to cross Lagos in traffic to find the right ram. Choose your preferred size from home, order within your budget and have it delivered to your doorstep." },
             ].map((sample) => <div key={sample.title} className="rounded-xl border border-border bg-card p-6 shadow-sm"><FileText className="mb-5 h-5 w-5 text-accent" /><h4 className="font-display text-lg font-bold text-foreground">{sample.title}</h4><p className="mt-3 text-sm leading-6 text-muted-foreground">{sample.excerpt}</p></div>)}
           </div>
+          <DocumentGallery documents={groubyDocuments} description="Open each original Grouby copywriting sample in a clean browser reading view, or download the source Word document." />
         </motion.article>
 
         <motion.article initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="rounded-2xl bg-hero p-7 text-hero-foreground md:p-10">

@@ -1,29 +1,24 @@
 import HeroSection from "@/components/HeroSection";
 import StatsSection from "@/components/StatsSection";
-import ExperienceSection from "@/components/ExperienceSection";
-import WorkSection from "@/components/WorkSection";
-import ClientWorkSection from "@/components/ClientWorkSection";
-
-import SkillsSection from "@/components/SkillsSection";
+import ServicesSection from "@/components/ServicesSection";
 import ContactSection from "@/components/ContactSection";
 import SiteHeader from "@/components/SiteHeader";
-import AboutSection from "@/components/AboutSection";
-import ProcessSection from "@/components/ProcessSection";
+import ScrollProgress from "@/components/ScrollProgress";
+import FeaturedWork from "@/components/FeaturedWork";
 
 const Index = () => {
   return (
-    <main className="overflow-x-hidden">
+    <>
+      <ScrollProgress />
       <SiteHeader />
-      <HeroSection />
-      <StatsSection />
-      <ClientWorkSection />
-      <ProcessSection />
-      <WorkSection />
-      <SkillsSection />
-      <ExperienceSection />
-      <AboutSection />
-      <ContactSection />
-    </main>
+      <main className="overflow-x-hidden">
+        <HeroSection />
+        <StatsSection />
+        <FeaturedWork />
+        <ServicesSection />
+        <ContactSection />
+      </main>
+    </>
   );
 };
 

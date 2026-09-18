@@ -3,7 +3,7 @@ import { Mail, Linkedin, ArrowUpRight, Download } from "lucide-react";
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-24 bg-hero">
+    <section id="contact" className="bg-hero py-16 sm:py-24">
       <div className="container mx-auto px-6 lg:px-16 max-w-2xl text-center">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -24,24 +24,41 @@ const ContactSection = () => {
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap">
             <a
               href="mailto:eniolamiseyi62@gmail.com"
-              className="flex items-center gap-2 rounded-full bg-accent px-6 py-3 font-body text-sm font-semibold text-accent-foreground transition-transform hover:-translate-y-0.5"
+              className="flex min-h-11 w-full min-w-0 items-center justify-center gap-2 rounded-full bg-accent px-4 py-3 font-body text-sm font-semibold text-accent-foreground transition-transform hover:-translate-y-0.5 sm:w-auto sm:px-6"
             >
-              <Mail className="w-4 h-4" />
-              eniolamiseyi62@gmail.com
+              <Mail className="h-4 w-4 shrink-0" />
+              <span className="min-w-0 [overflow-wrap:anywhere]">eniolamiseyi62@gmail.com</span>
             </a>
             <a
               href="https://linkedin.com/in/eniolami-saheed"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 font-body text-sm font-semibold text-hero-foreground transition-colors hover:border-stat-accent hover:text-stat-accent"
+              className="flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3 font-body text-sm font-semibold text-hero-foreground transition-colors hover:border-stat-accent hover:text-stat-accent sm:w-auto"
             >
               <Linkedin className="w-4 h-4" />
               LinkedIn <ArrowUpRight className="w-4 h-4" />
             </a>
             <a
+              href="https://x.com/uniquEnny20"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit @uniquEnny20 on X (opens in a new tab)"
+              className="flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3 font-body text-sm font-semibold text-hero-foreground transition-colors hover:border-stat-accent hover:text-stat-accent sm:w-auto"
+            >
+              X (Twitter) <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+            <a
+              href="/Eniolami-Saheed-CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3 font-body text-sm font-semibold text-hero-foreground transition-colors hover:border-stat-accent hover:text-stat-accent sm:w-auto"
+            >
+              View CV <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+            <a
               href="/Eniolami-Saheed-CV.pdf"
               download
-              className="flex items-center gap-2 rounded-full border border-stat-accent/60 px-6 py-3 font-body text-sm font-semibold text-stat-accent transition-colors hover:bg-stat-accent hover:text-hero"
+              className="flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-stat-accent/60 px-6 py-3 font-body text-sm font-semibold text-stat-accent transition-colors hover:bg-stat-accent hover:text-hero sm:w-auto"
             >
               <Download className="w-4 h-4" />
               Download CV

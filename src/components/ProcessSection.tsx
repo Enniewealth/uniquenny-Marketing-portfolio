@@ -10,19 +10,19 @@ const steps = [
 ];
 
 const ProcessSection = () => (
-  <section id="process" className="bg-hero py-24 text-hero-foreground md:py-32">
+  <section id="process" className="bg-card pt-8 pb-16 text-foreground sm:pb-24">
     <div className="mx-auto max-w-6xl px-6 lg:px-10">
-      <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+      <div className="grid gap-10 border-t border-border pt-10 lg:grid-cols-[0.8fr_1.2fr]">
         <div>
           <p className="eyebrow text-stat-accent">How I work</p>
-          <h2 className="mt-4 max-w-md font-display text-4xl font-bold leading-tight md:text-5xl">Creative work with a clear approval trail.</h2>
+          <h2 className="mt-4 max-w-md font-display text-3xl font-bold leading-tight">From the brief to better content.</h2>
           <p className="mt-6 max-w-md text-base leading-7 text-hero-muted">My process is designed for teams that need good content without losing accuracy, accountability or brand consistency.</p>
         </div>
         <div className="grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2">
           {steps.map((step) => {
             const Icon = step.icon;
             return (
-              <article key={step.number} className="bg-hero p-6 md:p-7">
+              <article key={step.number} className="bg-card p-6 md:p-7">
                 <div className="flex items-center justify-between">
                   <Icon className="h-5 w-5 text-stat-accent" />
                   <span className="text-xs font-bold tracking-[0.18em] text-hero-muted/60">{step.number}</span>

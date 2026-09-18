@@ -67,13 +67,13 @@ const experiences = [
 
 const ExperienceSection = () => {
   return (
-    <section id="experience" className="bg-background py-24 md:py-32">
-      <div className="container mx-auto max-w-5xl px-6 lg:px-16">
+    <section id="experience" className="bg-hero pt-8 pb-16 sm:pb-24">
+      <div className="mx-auto max-w-6xl px-6 lg:px-10">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-10 border-t border-border pt-10"
         >
           <span className="text-accent font-body text-xs tracking-[0.25em] uppercase font-semibold">
             Career
@@ -96,14 +96,14 @@ const ExperienceSection = () => {
             >
               <div className="absolute left-[-5px] top-[6px] w-2 h-2 rounded-full bg-accent" />
 
-              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-3">
-                <div>
+              <div className="mb-3 flex flex-col gap-2 lg:flex-row lg:items-baseline lg:justify-between lg:gap-6">
+                <div className="min-w-0">
                   <h3 className="font-display text-lg font-bold text-foreground leading-snug">
                     {exp.role}
                   </h3>
                   <p className="text-accent font-body text-sm font-semibold">{exp.company}</p>
                 </div>
-                <p className="text-muted-foreground font-body text-xs whitespace-nowrap">
+                <p className="text-muted-foreground font-body text-xs leading-5 lg:max-w-[15rem] lg:shrink-0 lg:text-right">
                   {exp.period} · {exp.location}
                 </p>
               </div>
