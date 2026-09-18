@@ -24,7 +24,7 @@ type Proof = {
 const ProofGrid = ({ items }: { items: Proof[] }) => (
   <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-3 md:grid md:grid-cols-3 md:overflow-visible md:pb-0">
     {items.map((item, index) => (
-      <motion.figure key={item.alt} initial={{ opacity: 0, y: 28, rotate: index % 2 ? 1 : -1 }} whileInView={{ opacity: 1, y: 0, rotate: 0 }} whileHover={{ y: -8 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.55, delay: index * 0.07 }} className="w-[86%] shrink-0 snap-start overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-shadow hover:shadow-2xl sm:w-[62%] md:w-auto">
+      <motion.figure key={item.alt} initial={{ opacity: 0, y: 28, rotate: index % 2 ? 1 : -1 }} whileInView={{ opacity: 1, y: 0, rotate: 0 }} whileHover={{ y: -8 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.55, delay: index * 0.07 }} className="work-proof w-[86%] shrink-0 snap-start overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-shadow hover:shadow-2xl sm:w-[62%] md:w-auto">
         <ImagePreview src={item.src} title={item.alt} caption={item.caption} />
         <figcaption className="border-t border-border px-4 py-3 text-sm leading-5 text-muted-foreground">{item.caption}</figcaption>
       </motion.figure>

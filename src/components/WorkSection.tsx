@@ -96,7 +96,7 @@ const WorkSection = () => {
               whileHover={reducedMotion ? undefined : { y: -9, rotate: index % 2 ? 0.4 : -0.4 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.45, delay: (index % 3) * 0.06 }}
-              className="w-[86%] shrink-0 snap-start overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-2xl sm:w-auto"
+              className="work-gallery-card w-[86%] shrink-0 snap-start overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-2xl sm:w-auto"
             >
               <ImagePreview src={work.src} title={work.title} caption={`TechCrier · ${work.type} · ${work.category}`} aspect="square" />
               <div className="p-5">
