@@ -25,7 +25,7 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="bg-primary py-20 text-primary-foreground sm:py-28 md:py-36">
+    <section id="services" className="bg-card py-20 text-foreground sm:py-28 md:py-36">
       <div className="mx-auto max-w-6xl px-6 lg:px-10">
         <motion.div
           initial={{ opacity: 0 }}
@@ -36,13 +36,13 @@ const ServicesSection = () => {
           <span className="font-body text-xs font-semibold uppercase tracking-[0.25em] text-accent">
             Services & process
           </span>
-          <h2 className="mt-4 font-display text-5xl leading-none text-primary-foreground md:text-7xl">
+          <h2 className="mt-4 font-display text-5xl leading-none text-foreground md:text-7xl">
             From idea to impact.
           </h2>
-          <p className="mt-6 max-w-2xl text-base leading-7 text-hero-muted">From shaping the story to publishing and measuring it, I help technology brands and founders communicate with clarity.</p>
+          <p className="mt-6 max-w-2xl text-base leading-7 text-muted-foreground">From shaping the story to publishing and measuring it, I help technology brands and founders communicate with clarity.</p>
         </motion.div>
 
-        <div className="grid border-l border-t border-white/15 sm:grid-cols-2">
+        <div className="grid border-l border-t border-border sm:grid-cols-2">
           {services.map((group, i) => (
             <motion.div
               key={group.title}
@@ -50,16 +50,16 @@ const ServicesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              className="group min-w-0 border-b border-r border-white/15 p-7 transition-colors duration-500 hover:bg-white/[0.06] md:p-9"
+              className="group min-w-0 border-b border-r border-border p-7 transition-colors duration-500 hover:bg-secondary/50 md:p-9"
             >
               <div className="mb-8 flex items-start justify-between"><span className="text-xs font-bold tracking-[0.2em] text-accent">0{i + 1}</span><span className="h-2 w-2 rounded-full bg-accent transition-transform duration-500 group-hover:scale-[2]" /></div>
-              <h3 className="mb-4 font-display text-3xl text-primary-foreground md:text-4xl">{group.title}</h3>
-              <p className="mb-6 text-sm leading-6 text-hero-muted">{group.description}</p>
+              <h3 className="mb-4 font-display text-3xl text-foreground md:text-4xl">{group.title}</h3>
+              <p className="mb-6 text-sm leading-6 text-muted-foreground">{group.description}</p>
               <div className="flex flex-wrap gap-2">
                 {group.deliverables.map((deliverable) => (
                   <span
                     key={deliverable}
-                    className="rounded-full border border-white/15 px-3 py-1.5 font-body text-xs font-medium text-primary-foreground/75"
+                    className="rounded-full border border-border px-3 py-1.5 font-body text-xs font-medium text-foreground/75"
                   >
                     {deliverable}
                   </span>
