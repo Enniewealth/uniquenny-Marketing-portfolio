@@ -43,6 +43,20 @@ const DetailGrid = ({ items }: { items: { label: string; text: string }[] }) => 
   </div>
 );
 
+const MetricRail = ({ items }: { items: string[] }) => (
+  <div className="relative mt-7 overflow-hidden py-1">
+    <div className="case-metrics flex w-max gap-3 will-change-transform">
+      {[false, true].map((duplicate) => (
+        <div key={String(duplicate)} aria-hidden={duplicate || undefined} className="flex shrink-0 gap-3">
+          {items.map((metric) => <span key={metric} className="min-w-[17rem] rounded-full border border-accent/25 bg-accent/5 px-5 py-3 text-center text-sm font-semibold text-foreground">{metric}</span>)}
+        </div>
+      ))}
+    </div>
+    <span aria-hidden="true" className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-secondary/80 to-transparent" />
+    <span aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-secondary/80 to-transparent" />
+  </div>
+);
+
 const ClientWorkSection = () => (
   <section id="case-studies" className="border-t border-border bg-secondary/30 py-20 sm:py-28 md:py-36">
     <div className="mx-auto max-w-6xl px-6 lg:px-10">
@@ -62,9 +76,7 @@ const ClientWorkSection = () => (
             </div>
             <div>
               <p className="text-base leading-7 text-muted-foreground">I turned the founder&apos;s Shopify and technical expertise into platform-native content, then used performance reporting to refine topics, formats and distribution across X and LinkedIn.</p>
-              <div className="mt-5 flex flex-wrap gap-3">
-                {["100K X impressions · +632%", "11,628 LinkedIn impressions · +88.8%", "535 reactions · 52 comments"].map((metric) => <span key={metric} className="rounded-full border border-accent/20 bg-accent/5 px-4 py-2 text-sm font-semibold text-foreground">{metric}</span>)}
-              </div>
+              <MetricRail items={["100K X impressions · +632%", "11,628 LinkedIn impressions · +88.8%", "535 reactions · 52 comments"]} />
             </div>
           </div>
           <DetailGrid items={[
@@ -91,9 +103,7 @@ const ClientWorkSection = () => (
             </div>
             <div>
               <p className="text-base leading-7 text-muted-foreground">I led content strategy and social media management across AI education, products and conversion campaigns, while managing the community those campaigns fed into.</p>
-              <div className="mt-5 flex flex-wrap gap-3">
-                {["16.6K LinkedIn impressions", "43 net new followers", "99 net community growth · July"].map((metric) => <span key={metric} className="rounded-full border border-accent/20 bg-accent/5 px-4 py-2 text-sm font-semibold text-foreground">{metric}</span>)}
-              </div>
+              <MetricRail items={["16.6K LinkedIn impressions", "43 net new followers", "99 net community growth · July"]} />
             </div>
           </div>
           <DetailGrid items={[

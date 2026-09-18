@@ -32,8 +32,14 @@ try {
   await row.scrollIntoViewIfNeeded();
   const animation = await row.evaluate(element => getComputedStyle(element, '::after').animationName);
   assert.equal(animation, 'work-sweep', 'Work rows should have continuous motion');
+  await page.goto(`http://127.0.0.1:${server.address().port}/work`, { waitUntil: 'load' });
+  const caseRail = page.locator('.case-metrics').first();
+  const caseBefore = await caseRail.evaluate(element => getComputedStyle(element).transform);
+  await page.waitForTimeout(900);
+  const caseAfter = await caseRail.evaluate(element => getComputedStyle(element).transform);
+  assert.notEqual(caseBefore, caseAfter, 'Case-study metrics should move continuously');
   assert.deepEqual(errors, [], 'No browser runtime errors');
-  console.log('PASS: metrics and work animations move continuously with no runtime errors.');
+  console.log('PASS: homepage metrics, case-study metrics and work animations move continuously with no runtime errors.');
 } finally {
   await browser?.close();
   server.close();

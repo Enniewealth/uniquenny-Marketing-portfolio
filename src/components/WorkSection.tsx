@@ -68,6 +68,15 @@ const articles = [
   { title: "How to find and quietly unlink phone numbers tied to your NIN", href: "https://www.techcrier.com/2025/12/how-to-find-and-quietly-unlink-phone.html", category: "Telecoms" },
   { title: "10 African startups that folded in 2025", href: "https://www.techcrier.com/2025/12/10-african-startups-that-folded-in-2025.html", category: "Startups" },
   { title: "Bolaji Yusuf’s Mission to Build World-Class Tech With WebuildX", href: "https://www.techcrier.com/2025/12/bolaji-yusufs-mission-to-build-world.html", category: "Founder profile" },
+  { title: "How Artificial Intelligence Could Disrupt Nigeria’s 2027 Elections", href: "https://www.techcrier.com/2026/03/how-artificial-intelligence-could.html", category: "AI & society" },
+  { title: "WhatsApp Tests Guest Chats to Enable Messaging Without App Installation", href: "https://www.techcrier.com/2026/03/whatsapp-tests-guest-chats-to-enable.html", category: "Consumer tech" },
+  { title: "TaxStreem Launches Automation Platform to Simplify Business Tax Compliance", href: "https://www.techcrier.com/2026/03/taxstreem-launches-automation-platform.html", category: "Creator tech" },
+  { title: "M-PESA Ethiopia Expands Into Tax Payments", href: "https://www.techcrier.com/2026/03/m-pesa-ethiopia-expands-into-tax.html", category: "Telecoms" },
+  { title: "Namibia Rejects Starlink Licence Applications", href: "https://www.techcrier.com/2026/03/namibia-rejects-starlink-licence.html", category: "Telecoms" },
+  { title: "Uber and Bolt Drivers in Benin Announce Seven-Day Strike", href: "https://www.techcrier.com/2026/03/uber-and-bolt-drivers-in-benin-announce.html", category: "Logistics" },
+  { title: "Onafriq Partners Conduit for Stablecoin Cross-Border Payments", href: "https://www.techcrier.com/2026/02/onafriq-partners-conduit-to-power-cross.html", category: "Fintech" },
+  { title: "Airtel Accelerates 5G Expansion Across Nigeria’s Top 20 Cities", href: "https://www.techcrier.com/2026/02/airtel-accelerates-5g-expansion-across.html", category: "Telecoms" },
+  { title: "The Evolution of Nigerian Fintech: A 2026 Industry Analysis", href: "https://www.techcrier.com/2026/02/the-evolution-of-nigerian-fintech-2026.html", category: "Fintech" },
 ];
 
 const WorkSection = () => {
