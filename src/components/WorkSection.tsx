@@ -73,9 +73,9 @@ const articles = [
 const WorkSection = () => {
   const reducedMotion = useReducedMotion();
   return (
-    <section id="work" className="bg-secondary/30 pt-8 pb-16 sm:pb-24">
+    <section id="work" className="bg-secondary/30 py-20 sm:py-28 md:py-36">
       <div className="mx-auto max-w-6xl px-6 lg:px-10">
-        <div className="mb-8 max-w-2xl border-t border-border pt-10">
+        <div className="mb-14 max-w-2xl border-t border-border pt-12 md:mb-20">
           <p className="eyebrow mb-3 text-accent">
             TechCrier · Content gallery
           </p>
@@ -87,18 +87,19 @@ const WorkSection = () => {
           </p>
         </div>
 
-        <div className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-3 sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 lg:grid-cols-3">
+        <div className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 lg:grid-cols-3 lg:gap-8">
           {works.map((work, index) => (
             <motion.article
               key={work.title}
               initial={reducedMotion ? false : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={reducedMotion ? undefined : { y: -9, rotate: index % 2 ? 0.4 : -0.4 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.45, delay: (index % 3) * 0.06 }}
-              className="w-[86%] shrink-0 snap-start overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-shadow hover:shadow-xl sm:w-auto"
+              className="w-[86%] shrink-0 snap-start overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-2xl sm:w-auto"
             >
               <ImagePreview src={work.src} title={work.title} caption={`TechCrier · ${work.type} · ${work.category}`} aspect="square" />
-              <div className="p-4">
+              <div className="p-5">
                 <div className="mb-1 flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
                   <span className="text-xs uppercase tracking-wider text-accent font-semibold">
                     {work.type}
@@ -120,12 +121,12 @@ const WorkSection = () => {
             </motion.article>
           ))}
         </div>
-        <div className="mt-10">
+        <motion.div initial={reducedMotion ? false : { opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mt-20 md:mt-28">
           <h3 className="font-display text-2xl font-bold">Read the published articles</h3>
-          <div className="mt-5 grid gap-4 md:grid-cols-3">
-            {articles.map(article => <a key={article.href} href={article.href} target="_blank" rel="noopener noreferrer" className="group flex min-w-0 flex-col rounded-xl border border-border bg-card p-5 transition-colors hover:border-accent/60"><span className="text-xs font-semibold uppercase tracking-wider text-accent">{article.category}</span><span className="my-3 font-display text-lg font-bold leading-6">{article.title}</span><span className="mt-auto inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-accent">Read on TechCrier <ArrowUpRight size={16} aria-hidden="true" /></span></a>)}
+          <div className="mt-7 grid gap-5 md:grid-cols-3">
+            {articles.map(article => <a key={article.href} href={article.href} target="_blank" rel="noopener noreferrer" className="group flex min-w-0 flex-col rounded-xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-accent/60 hover:shadow-xl"><span className="text-xs font-semibold uppercase tracking-wider text-accent">{article.category}</span><span className="my-4 font-display text-xl font-bold leading-7">{article.title}</span><span className="mt-auto inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-accent">Read on TechCrier <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true" /></span></a>)}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

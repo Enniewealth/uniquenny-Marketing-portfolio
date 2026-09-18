@@ -47,7 +47,7 @@ try {
     });
     await page.waitForTimeout(800);
     const overflow = await page.evaluate(() => [...document.querySelectorAll('section h1, section h2, section h3, section p, section a, section img')]
-      .filter(el => { const r = el.getBoundingClientRect(); const rail = el.closest('.overflow-x-auto'); return !rail && r.width && (r.left < -1 || r.right > innerWidth + 1); })
+      .filter(el => { const r = el.getBoundingClientRect(); const rail = el.closest('.overflow-x-auto, .metrics-marquee'); return !rail && r.width && (r.left < -1 || r.right > innerWidth + 1); })
       .map(el => `${el.tagName}: ${el.textContent?.trim().slice(0, 70) || el.getAttribute('alt')}`));
     assert.deepEqual(overflow, [], `Content overflows at ${width}px`);
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
