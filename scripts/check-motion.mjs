@@ -38,8 +38,13 @@ try {
   await page.waitForTimeout(900);
   const caseAfter = await caseRail.evaluate(element => getComputedStyle(element).transform);
   assert.notEqual(caseBefore, caseAfter, 'Case-study metrics should move continuously');
+  const proofRail = page.locator('.proof-carousel').first();
+  const proofBefore = await proofRail.evaluate(element => getComputedStyle(element).transform);
+  await page.waitForTimeout(900);
+  const proofAfter = await proofRail.evaluate(element => getComputedStyle(element).transform);
+  assert.notEqual(proofBefore, proofAfter, 'Analytics image galleries should move continuously');
   assert.deepEqual(errors, [], 'No browser runtime errors');
-  console.log('PASS: homepage metrics, case-study metrics and work animations move continuously with no runtime errors.');
+  console.log('PASS: homepage metrics, case-study metrics, analytics images and work animations move continuously with no runtime errors.');
 } finally {
   await browser?.close();
   server.close();
